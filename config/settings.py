@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
     'home.apps.HomeConfig',
     'users.apps.UsersConfig',
+    'planners.apps.PlannersConfig',
 ]
 
 MIDDLEWARE = [
