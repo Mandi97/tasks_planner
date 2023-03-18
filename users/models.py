@@ -4,7 +4,7 @@ from django.db import models
 
 
 class AccountManager(BaseUserManager):
-
+    """Creates user or superuser for our database"""
     def create_user(self, email, fullname, password=None):
         if not email:
             raise ValueError('User must provide email!')
@@ -33,6 +33,7 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
+    """Define account information in database"""
     email = models.EmailField(max_length=60, unique=True, verbose_name='Email Address')
     fullname = models.CharField(max_length=30, unique=True)
     date_join = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)

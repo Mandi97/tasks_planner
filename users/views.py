@@ -6,6 +6,7 @@ from . import forms
 
 
 def registration_view(request):
+    """Registration possibility for our website"""
     form = forms.RegistrationForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -16,6 +17,7 @@ def registration_view(request):
 
 
 def login_user_view(request):
+    """Login possibility for our website"""
     if request.method == 'POST':
         form = forms.LoginForm(request, request.POST)
 
@@ -34,5 +36,6 @@ def login_user_view(request):
 
 
 def logout_user(request):
+    """Logout possibility for our website"""
     logout(request)
     return redirect(reverse_lazy('home:home'))
