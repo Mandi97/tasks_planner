@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 
 
@@ -23,8 +24,26 @@ class RegistrationForm(forms.ModelForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data.get('password'))
+        user.is_active = True
 
         if commit:
             user.save()
 
         return user
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.EmailField(
+        label='Email',
+        widget=forms.TextInput(attrs={
+            'name': 'username',
+            'placeholder': 'Email'
+        })
+    )
+
+    class Meta:
+        fields = ('username', 'password')
+
+    error_messages = {
+        "invalid_login": "Please enter a correct email and password."
+    }
