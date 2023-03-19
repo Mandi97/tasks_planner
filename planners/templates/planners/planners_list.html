@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <h1>Planners List:</h1>
+
+    <ul>
+        {% for planner in planners %}
+            <li class="mb-3">{{ planner.title }}</li>
+
+            {% empty %}
+            <p>You currently have 0 planners created. Try to add some!</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
