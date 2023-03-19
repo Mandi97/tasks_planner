@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 
 {% block container %}
-    <h1>Planners List:</h1>
-
-    <ul>
-        {% for planner in planners %}
-            <li class="mb-3">{{ planner.title }}</li>
-
-            {% empty %}
-            <p>You currently have 0 planners created. Try to add some!</p>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col">
+        <div class="card-group">
+            {% for planner in planners %}
+                {% if user.is_authenticated %}
+                    {% if planner.owner_id == request.user.id %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ planner.title }}</h5>
+                            <a href="{% url 'planners:planner-detail' pk=planner.pk %}" class="btn btn-primary">See planner</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+    </div>
 {% endblock %}
