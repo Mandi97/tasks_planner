@@ -24,6 +24,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'planners:planners-list' %}">Planners</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'planners:planner-create' %}">New Planner</a>
+                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'users:registration' %}">Register</a>
