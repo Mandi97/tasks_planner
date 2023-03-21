@@ -4,7 +4,7 @@
     <form action="{% url 'planners:planner-delete' pk=planner.pk %}" method="post">
         {% csrf_token %}
         <h2 class="text-center mt-3">Are you sure you want to delete <b>{{ planner }}</b></h2>
-        <button class="btn btn-success float-right btn-lg mb-3 mt-0" type="reset">Confirm</button>
+        <button class="btn btn-success float-right btn-lg mb-3 mt-0" type="submit">Confirm</button>
         <a href="{% url 'planners:planner-detail' pk=planner.pk %}" class="btn btn-danger float-right btn-lg mb-3 mt-0">Back</a>
     </form>
 {% endblock %}

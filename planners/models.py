@@ -4,12 +4,23 @@ from django.utils.text import slugify
 
 from users.models import Account
 
+DAY_CHOICES = (
+    ('monday', 'Monday'),
+    ('tuesday', 'Tuesday'),
+    ('wednesday', 'Wednesday'),
+    ('thursday', 'Thursday'),
+    ('friday', 'Friday'),
+    ('saturday', 'Saturday'),
+    ('sunday', 'Sunday'),
+
+)
+
 
 class Task(models.Model):
     """Creating tasks for database"""
     title = models.CharField(max_length=200)
     description = models.TextField()
-    day_name = models.CharField(max_length=20)
+    day_name = models.CharField(max_length=20, choices=DAY_CHOICES, default=None)
     planner = models.ForeignKey('Planner', on_delete=models.CASCADE, related_name='planner', null=True, blank=True)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='task_owner')
 

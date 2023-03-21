@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
 from . import models
+from .forms import TaskForm
 
 
 class PlannerListView(ListView):
@@ -46,3 +47,14 @@ class PlannerUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         pk = self.kwargs.get('pk')
         return str(reverse_lazy('planners:planner-detail', kwargs={'pk': pk}))
+
+
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    model = models.Task
+    form_class = TaskForm
+    template_name = 'planners/task_create.html'
+    success_url = reverse_lazy('planners:planners-list')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
