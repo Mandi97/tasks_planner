@@ -6,6 +6,7 @@ from django.db import models
 class AccountManager(BaseUserManager):
     """Creates user or superuser for our database"""
     def create_user(self, email, fullname, password=None):
+        """Create user"""
         if not email:
             raise ValueError('User must provide email!')
 
@@ -21,6 +22,7 @@ class AccountManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, fullname, password=None):
+        """Create superuser"""
         user = self.create_user(email=email, fullname=fullname, password=password)
 
         user.is_admin = True

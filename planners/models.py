@@ -21,8 +21,8 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     day_name = models.CharField(max_length=20, choices=DAY_CHOICES, default=None)
-    planner = models.ForeignKey('Planner', on_delete=models.CASCADE, related_name='planner', null=True, blank=True)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='task_owner')
+    planner = models.ForeignKey('Planner', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='tasks_owner')
 
     def __str__(self):
         return self.title
@@ -32,9 +32,9 @@ class Planner(models.Model):
     """Creating planner for database with slug"""
     title = models.CharField(max_length=200)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='planners_creator')
+    members = models.ManyToManyField(get_user_model(), related_name='planners_member')
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
-    task = models.ForeignKey('Task', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
 
     def __str__(self):
         return self.title
