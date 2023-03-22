@@ -12,3 +12,6 @@ postgreSQL
 staticfiles/*
 
 .env
+.coverage
+htmlcov
+.pytest_cache
