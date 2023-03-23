@@ -7,7 +7,9 @@ It helps to keep an eye on the tasks you need to do.
 
 ## Technologies
 Project is created with:
-* 
+* Python: 3.10.9
+* Django: 4.1.7
+* Bootstrap: 4.6.2
 
 ## Setup
 To run this project:
