@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block container %}
     <h1>Tasks Planner</h1>
+    <p>Welcome to the Tasks Planner, a website developed by Paweł Mandrysz</p>
+    <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+      About
+    </button>
+
+    <div class="offcanvas offcanvas-start text-bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">About Tasks Planner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          Tasks Planner is a website application which allows to create planners, create tasks and add them to selected planner.
+            It helps to keep an eye on the tasks you need to do.
+        </div>
+      </div>
+    </div>
 {% endblock %}
+
