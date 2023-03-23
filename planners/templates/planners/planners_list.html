@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block container %}
-    <div class="row">
-        <div class="col">
-        <div class="card-group">
             {% for planner in planners %}
                 {% if user.is_authenticated %}
                     {% if planner.owner_id == request.user.id %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ planner.title }}</h5>
-                            <a href="{% url 'planners:planner-detail' pk=planner.pk %}" class="btn btn-primary">See planner</a>
+                        <div class="row">
+                          <div class="col-sm-8 mb-3 mb-sm-0">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title">{{ planner.title }}</h5>
+                                <p class="card-text">Created: {{ planner.created|date }}</p>
+                                <a href="{% url 'planners:planner-detail' pk=planner.pk %}" class="btn btn-secondary">Details</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                     {% endif %}
                 {% endif %}
