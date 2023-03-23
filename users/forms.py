@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 
 class RegistrationForm(forms.ModelForm):
+    """Form that allows user to registrate"""
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password_confirmation = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
@@ -13,6 +14,7 @@ class RegistrationForm(forms.ModelForm):
         fields = ('email', 'fullname', 'password')
 
     def clean_password_confirmation(self):
+        """Checking if both passwords are the same"""
         password = self.cleaned_data.get('password')
         password_confirmation = self.cleaned_data.get('password_confirmation')
 
@@ -33,6 +35,7 @@ class RegistrationForm(forms.ModelForm):
 
 
 class LoginForm(AuthenticationForm):
+    """Form that allows user to login"""
     username = forms.EmailField(
         label='Email',
         widget=forms.TextInput(attrs={
