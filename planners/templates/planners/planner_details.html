@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block container %}
-    <div class="row">
+    <div class="block">
         <div class="col-md-9">
             <h1>{{ planner.title }}</h1>
             <p><i>Created by: {{ planner.owner.fullname }}</i></p>
@@ -9,11 +9,11 @@
             <a href="{% url 'planners:planner-delete' pk=planner.pk %}" class="btn btn-danger">Delete Planner</a>
             <a href="{% url 'planners:task-create' %}" class="btn btn-success">Create Task</a>
             <p></p>
-            <div class="vstack gap-md-2">
-            <div class="bg-body-tertiary border">Monday:</div>
-                {% for task in tasks.monday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
+            {% for day, tasks_day in tasks.items %}
+            <div class="bg-body-tertiary border">{{ day }}:</div>
+                {% for task in tasks_day %}
+                    <div class="btn-group dropend d-block">
+                      <button type="button" class="btn btn-secondary w-75">
                         {{ task.title }}
                       </button>
                       <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,106 +23,12 @@
                         <li><a class="dropdown-item" href="#">Description:</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            <div class="bg-body-tertiary border">Tuesday:</div>
-                {% for task in tasks.tuesday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
+                        <li><a class="btn btn-secondary" href="{% url 'planners:task-update' pk=task.pk %}">Edit Task</a></li>
                       </ul>
                     </div>
                 {% endfor %}
-            <div class="bg-body-tertiary border">Wednesday:</div>
-                {% for task in tasks.wednesday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            <div class="bg-body-tertiary border">Thursday:</div>
-                {% for task in tasks.thursday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            <div class="bg-body-tertiary border">Friday:</div>
-                {% for task in tasks.friday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            <div class="bg-body-tertiary border">Saturday:</div>
-                {% for task in tasks.saturday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            <div class="bg-body-tertiary border">Sunday:</div>
-                {% for task in tasks.sunday %}
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn btn-secondary">
-                        {{ task.title }}
-                      </button>
-                      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropend</span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Description:</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
-                      </ul>
-                    </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

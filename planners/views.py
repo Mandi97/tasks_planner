@@ -88,3 +88,25 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         kwargs = super().get_form_kwargs()
         kwargs['owner'] = self.request.user
         return kwargs
+
+
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    """Created possibility to edit tasks"""
+    model = models.Task
+    form_class = forms.TaskForm
+    template_name = 'planners/task_update.html'
+    context_object_name = 'task'
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['owner'] = self.request.user
+        return kwargs
+
+    def get_success_url(self):
+        """Redirect to the same planner where we edited task"""
+        pk = self.kwargs.get('pk')
+        return str(reverse_lazy('planners:planner-detail', kwargs={'pk': pk}))
