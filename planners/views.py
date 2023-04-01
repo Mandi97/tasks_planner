@@ -1,11 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
 
-
 from . import models
 from . import forms
+from .models import Planner
 
 
 class PlannerListView(ListView):
@@ -13,6 +12,12 @@ class PlannerListView(ListView):
     model = models.Planner
     template_name = 'planners/planners_list.html'
     context_object_name = 'planners'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_planner_count = Planner.objects.filter(owner=self.request.user).count()
+        context['user_planner_count'] = user_planner_count
+        return context
 
 
 class PlannerDetailView(DetailView):

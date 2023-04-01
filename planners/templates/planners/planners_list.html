@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block container %}
+    <p>You have {{  user_planner_count }} planners.</p>
             {% for planner in planners %}
                 {% if user.is_authenticated %}
                     {% if planner.owner_id == request.user.id %}
