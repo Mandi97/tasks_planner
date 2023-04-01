@@ -26,6 +26,7 @@
                         <li><a class="dropdown-item" href="#">{{ task.description }}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="btn btn-secondary" href="{% url 'planners:task-update' pk=task.pk %}">Edit Task</a></li>
+                        <li><a class="btn btn-danger" href="{% url 'planners:task-delete' pk=task.pk %}">Delete Task</a></li>
                       </ul>
                     </div>
                 {% endfor %}

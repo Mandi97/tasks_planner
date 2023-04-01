@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <form action="{% url 'planners:task-delete' pk=task.pk %}" method="post">
+        {% csrf_token %}
+        <h2 class="text-center mt-3">Are you sure you want to delete <b>{{ task }}</b></h2>
+        <button class="btn btn-success float-right btn-lg mb-3 mt-0" type="submit">Confirm</button>
+        <a href="{% url 'planners:planners-list' %}" class="btn btn-danger float-right btn-lg mb-3 mt-0">Cancel</a>
+    </form>
+{% endblock %}

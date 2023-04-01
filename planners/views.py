@@ -116,3 +116,16 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
         """Redirect to the same planner where we edited task"""
         pk = self.kwargs.get('pk')
         return str(reverse_lazy('planners:planner-detail', kwargs={'pk': pk}))
+
+
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    """Created possibility to delete task"""
+    model = models.Task
+    template_name = 'planners/task_delete.html'
+    context_object_name = 'task'
+
+    def get_success_url(self):
+        """Redirect to the same planner where we deleted task"""
+        task = self.get_object()
+        planner_pk = task.planner.pk
+        return str(reverse_lazy('planners:planner-detail', kwargs={'pk': planner_pk}))
