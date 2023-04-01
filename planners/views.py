@@ -42,6 +42,7 @@ class PlannerDetailView(DetailView):
         for task in planner.tasks.all():
             tasks[task.day_name].append(task)
         context['tasks'] = tasks
+        context['user_task_count'] = planner.tasks.filter(owner=self.request.user).count()
         return context
 
 
