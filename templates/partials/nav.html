@@ -18,7 +18,7 @@
                 Planner
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'planners:planners-list' %}">All Planners</a></li>
+                <li><a class="dropdown-item" href="{% url 'planners:planners-list' %}">All Planners({{ user_planner_count }})</a></li>
                 <li><a class="dropdown-item" href="{% url 'planners:planner-create' %}">New Planners</a></li>
               </ul>
             </li>
