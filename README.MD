@@ -1,4 +1,5 @@
 # Tasks Planner
+## Check [Demo](https://tasks-planner.herokuapp.com/).
 
 ## General info
 This project is simple Tasks Planner. 
@@ -10,7 +11,7 @@ Project is created with:
 * Python: 3.10.9
 * Django: 4.1.7
 * Bootstrap: 4.6.2
-* Database: PostreSQL
+* Database: PostreSQL/SQLite
 
 ## Setup
 To run this project:
