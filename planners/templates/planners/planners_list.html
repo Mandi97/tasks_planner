@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block container %}
-    <p>You currently have {{  user_planner_count }} planners created.</p>
+    <p>You currently have {{  user_planner_count }} planner(s) created.</p>
             {% for planner in planners %}
                 {% if user.is_authenticated %}
                     {% if planner.owner_id == request.user.id %}

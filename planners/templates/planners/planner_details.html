@@ -5,7 +5,7 @@
         <div class="col-md-9">
             <h1>{{ planner.title }}</h1>
             <p><i>Created by: {{ planner.owner.fullname }}</i></p>
-            <p><i>You currently have {{ user_task_count }} tasks in your planner!</i></p>
+            <p><i>You currently have {{ user_task_count }} task(s) in your planner!</i></p>
             <a href="{% url 'planners:planner-update' pk=planner.pk %}" class="btn btn-warning">Edit Planner</a>
             <a href="{% url 'planners:planner-delete' pk=planner.pk %}" class="btn btn-danger">Delete Planner</a>
             <a href="{% url 'planners:task-create' %}" class="btn btn-success">Create Task</a>
