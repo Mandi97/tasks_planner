@@ -1,5 +1,5 @@
 # Tasks Planner
-## Check [Demo](https://tasks-planner.herokuapp.com/).
+### ***Check [Demo](https://tasks-planner.herokuapp.com/).***
 
 ## General info
 This project is simple Tasks Planner. 
