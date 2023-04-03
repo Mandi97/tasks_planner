@@ -4,7 +4,7 @@
 ## General info
 This project is simple Tasks Planner. 
 It is a website application which allows to create planners, create tasks and add them to selected planner.
-It helps to keep an eye on the tasks you need to do.
+It helps to keep an eye on tasks you need to do.
 
 ## Technologies
 Project is created with:
