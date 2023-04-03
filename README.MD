@@ -11,6 +11,9 @@ Project is created with:
 * Python: 3.10.9
 * Django: 4.1.7
 * Bootstrap: 4.6.2
+* HTML
+* CSS
+* Pytest
 * Database: PostreSQL/SQLite
 
 ## Setup
