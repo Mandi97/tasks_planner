@@ -3,11 +3,15 @@
 {% block content %}
 <section class="container-fluid">
     <div class="d-flex bg-img flex-column w-100 justify-content-center">
-        <h2 class="display-1 text-center text-white">Welcome to</h2>
-        <h5 class="display-2 text-center text-white font-weight-bold">
+        <h2 class="display-1 text-center text-white" style="font-weight: bolder;">
+            Welcome to
+        </h2>
+        <h5 class="display-1 text-center text-white" style="font-weight: bolder;">
             Tasks Planner
         </h5>
-        <a type="button" class="btn btn-outline-light w-10 rounded-pill" href="{% url 'home:read-more' %}">Read More</a>
+        <div class="btn text-center">
+        <a type="button" class="btn btn-outline-light w-10 rounded-pill" style="font-weight: bolder;" href="{% url 'home:read-more' %}">Read More</a>
+        </div>
     </div>
 </section>
 {% endblock %}
