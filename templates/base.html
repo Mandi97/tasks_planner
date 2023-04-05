@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'style/main.css' %}">
     <script src="{% static 'scripts/bootstrap.bundle.min.js' %}" async defer></script>
 </head>
-<body style="background-color: lightgrey">
+<body>
 
 {% include 'partials/nav.html' %}
 
@@ -25,6 +25,8 @@
         </div>
     </div>
 </div>
+{% block content %}
 
+{% endblock %}
 </body>
 </html>
