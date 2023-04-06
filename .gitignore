@@ -6,12 +6,9 @@ venv
 
 **/*.pyc
 
-db.sqlite3
-postgreSQL
 
 staticfiles/*
 
-.env
 .coverage
 htmlcov
 .pytest_cache
