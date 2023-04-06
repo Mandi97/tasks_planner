@@ -13,5 +13,6 @@ staticfiles/*
 
 .env
 .coverage
+.coveragerc
 htmlcov
 .pytest_cache
